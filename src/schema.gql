@@ -1,0 +1,1164 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type InvoiceDetail {
+  SOPTYPE: Int!
+  SOPNUMBE: String!
+  LNITMSEQ: Int!
+  CMPNTSEQ: Int!
+  ITEMNMBR: String!
+  ITEMDESC: String!
+  NONINVEN: Int!
+  DROPSHIP: Int!
+  UOFM: String!
+  LOCNCODE: String!
+  UNITCOST: Float!
+  ORUNTCST: Float!
+  UNITPRCE: Float!
+  ORUNTPRC: Float!
+  XTNDPRCE: Float!
+  OXTNDPRC: Float!
+  REMPRICE: Float!
+  OREPRICE: Float!
+  EXTDCOST: Float!
+  OREXTCST: Float!
+  MRKDNAMT: Float!
+  ORMRKDAM: Float!
+  MRKDNPCT: Int!
+  MRKDNTYP: Int!
+  INVINDX: Int!
+  CSLSINDX: Int!
+  SLSINDX: Int!
+  MKDNINDX: Int!
+  RTNSINDX: Int!
+  INUSINDX: Int!
+  INSRINDX: Int!
+  DMGDINDX: Int!
+  ITMTSHID: String!
+  IVITMTXB: Int!
+  BKTSLSAM: Float!
+  ORBKTSLS: Float!
+  TAXAMNT: Float!
+  ORTAXAMT: Float!
+  TXBTXAMT: Float!
+  OTAXTAMT: Float!
+  BSIVCTTL: Int!
+  TRDISAMT: Float!
+  ORTDISAM: Float!
+  DISCSALE: Float!
+  ORDAVSLS: Float!
+  QUANTITY: Float!
+  ATYALLOC: Float!
+  QTYINSVC: Float!
+  QTYINUSE: Float!
+  QTYDMGED: Float!
+  QTYRTRND: Float!
+  QTYONHND: Float!
+  QTYCANCE: Float!
+  QTYCANOT: Float!
+  QTYORDER: Float!
+  QTYPRBAC: Float!
+  QTYPRBOO: Float!
+  QTYPRINV: Float!
+  QTYPRORD: Float!
+  QTYPRVRECVD: Float!
+  QTYRECVD: Float!
+  QTYREMAI: Float!
+  QTYREMBO: Float!
+  QTYTBAOR: Float!
+  QTYTOINV: Float!
+  QTYTORDR: Float!
+  QTYFULFI: Float!
+  QTYSLCTD: Float!
+  QTYBSUOM: Float!
+  EXTQTYAL: Float!
+  EXTQTYSEL: Float!
+  ReqShipDate: DateTime!
+  FUFILDAT: DateTime!
+  ACTLSHIP: DateTime!
+  SHIPMTHD: String!
+  SALSTERR: String!
+  SLPRSNID: String!
+  PRCLEVEL: String!
+  COMMNTID: String!
+  BRKFLD1: Int!
+  BRKFLD2: Int!
+  BRKFLD3: Int!
+  CURRNIDX: Int!
+  TRXSORCE: String!
+  SOPLNERR: Byte!
+  DOCNCORR: String!
+  ORGSEQNM: Int!
+  ITEMCODE: String!
+  PURCHSTAT: Int!
+  DECPLQTY: Int!
+  DECPLCUR: Int!
+  ODECPLCU: Int!
+  EXCEPTIONALDEMAND: Int!
+  TAXSCHID: String!
+  TXSCHSRC: Int!
+  PRSTADCD: String!
+  ShipToName: String!
+  CNTCPRSN: String!
+  ADDRESS1: String!
+  ADDRESS2: String!
+  ADDRESS3: String!
+  CITY: String!
+  STATE: String!
+  ZIPCODE: String!
+  CCode: String!
+  COUNTRY: String!
+  PHONE1: String!
+  PHONE2: String!
+  PHONE3: String!
+  FAXNUMBR: String!
+  Flags: Int!
+  CONTNBR: String!
+  CONTLNSEQNBR: Float!
+  CONTSTARTDTE: DateTime!
+  CONTENDDTE: DateTime!
+  CONTITEMNBR: String!
+  CONTSERIALNBR: String!
+  ISLINEINTRA: Int!
+  Print_Phone_NumberGB: Int!
+  DEX_ROW_TS: DateTime!
+  DEX_ROW_ID: Int!
+  invoice: Invoice!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""The `Byte` scalar type represents byte value as a Buffer"""
+scalar Byte
+
+type RmOpenTransaction {
+  CUSTNMBR: String!
+  CPRCSTNM: String!
+  DOCNUMBR: String!
+  CHEKNMBR: String!
+  BACHNUMB: String!
+  BCHSOURC: String!
+  TRXSORCE: String!
+  RMDTYPAL: Int!
+  CSHRCTYP: Int!
+  CBKIDCRD: String!
+  CBKIDCSH: String!
+  CBKIDCHK: String!
+  DUEDATE: DateTime!
+  DOCDATE: DateTime!
+  POSTDATE: DateTime!
+  PSTUSRID: String!
+  GLPOSTDT: DateTime!
+  LSTEDTDT: DateTime!
+  LSTUSRED: String!
+  ORTRXAMT: Float!
+  CURTRXAM: Float!
+  SLSAMNT: Float!
+  COSTAMNT: Float!
+  FRTAMNT: Float!
+  MISCAMNT: Float!
+  TAXAMNT: Float!
+  COMDLRAM: Float!
+  CASHAMNT: Float!
+  DISTKNAM: Float!
+  DISAVAMT: Float!
+  DISAVTKN: Float!
+  DISCRTND: Float!
+  DISCDATE: DateTime!
+  DSCDLRAM: Float!
+  DSCPCTAM: Int!
+  WROFAMNT: Float!
+  TRXDSCRN: String!
+  CSPORNBR: String!
+  SLPRSNID: String!
+  SLSTERCD: String!
+  DINVPDOF: DateTime!
+  PPSAMDED: Float!
+  GSTDSAMT: Float!
+  DELETE1: Int!
+  AGNGBUKT: Int!
+  VOIDSTTS: Int!
+  VOIDDATE: DateTime!
+  TAXSCHID: String!
+  CURNCYID: String!
+  PYMTRMID: String!
+  SHIPMTHD: String!
+  TRDISAMT: Float!
+  SLSCHDID: String!
+  FRTSCHID: String!
+  MSCSCHID: String!
+  NOTEINDX: Float!
+  Tax_Date: DateTime!
+  APLYWITH: Int!
+  SALEDATE: DateTime!
+  CORRCTN: Int!
+  SIMPLIFD: Int!
+  Electronic: Int!
+  ECTRX: Int!
+  BKTSLSAM: Float!
+  BKTFRTAM: Float!
+  BKTMSCAM: Float!
+  BackoutTradeDisc: Float!
+  Factoring: Int!
+  DIRECTDEBIT: Int!
+  ADRSCODE: String!
+  EFTFLAG: Int!
+  DEX_ROW_TS: DateTime!
+  DEX_ROW_ID: Int!
+  client: Client!
+  invoice: Invoice!
+}
+
+type ProformasDetail {
+  SOPTYPE: Int!
+  SOPNUMBE: String!
+  LNITMSEQ: Int!
+  CMPNTSEQ: Int!
+  ITEMNMBR: String!
+  ITEMDESC: String!
+  NONINVEN: Int!
+  DROPSHIP: Int!
+  UOFM: String!
+  LOCNCODE: String!
+  UNITCOST: Float!
+  ORUNTCST: Float!
+  UNITPRCE: Float!
+  ORUNTPRC: Float!
+  XTNDPRCE: Float!
+  OXTNDPRC: Float!
+  REMPRICE: Float!
+  OREPRICE: Float!
+  EXTDCOST: Float!
+  OREXTCST: Float!
+  MRKDNAMT: Float!
+  ORMRKDAM: Float!
+  MRKDNPCT: Int!
+  MRKDNTYP: Int!
+  INVINDX: Int!
+  CSLSINDX: Int!
+  SLSINDX: Int!
+  MKDNINDX: Int!
+  RTNSINDX: Int!
+  INUSINDX: Int!
+  INSRINDX: Int!
+  DMGDINDX: Int!
+  ITMTSHID: String!
+  IVITMTXB: Int!
+  BKTSLSAM: Float!
+  ORBKTSLS: Float!
+  TAXAMNT: Float!
+  ORTAXAMT: Float!
+  TXBTXAMT: Float!
+  OTAXTAMT: Float!
+  BSIVCTTL: Int!
+  TRDISAMT: Float!
+  ORTDISAM: Float!
+  DISCSALE: Float!
+  ORDAVSLS: Float!
+  QUANTITY: Float!
+  ATYALLOC: Float!
+  QTYINSVC: Float!
+  QTYINUSE: Float!
+  QTYDMGED: Float!
+  QTYRTRND: Float!
+  QTYONHND: Float!
+  QTYCANCE: Float!
+  QTYCANOT: Float!
+  QTYONPO: Float!
+  QTYORDER: Float!
+  QTYPRBAC: Float!
+  QTYPRBOO: Float!
+  QTYPRINV: Float!
+  QTYPRORD: Float!
+  QTYPRVRECVD: Float!
+  QTYRECVD: Float!
+  QTYREMAI: Float!
+  QTYREMBO: Float!
+  QTYTBAOR: Float!
+  QTYTOINV: Float!
+  QTYTORDR: Float!
+  QTYFULFI: Float!
+  QTYSLCTD: Float!
+  QTYBSUOM: Float!
+  EXTQTYAL: Float!
+  EXTQTYSEL: Float!
+  ReqShipDate: DateTime!
+  FUFILDAT: DateTime!
+  ACTLSHIP: DateTime!
+  SHIPMTHD: String!
+  SALSTERR: String!
+  SLPRSNID: String!
+  PRCLEVEL: String!
+  COMMNTID: String!
+  BRKFLD1: Int!
+  BRKFLD2: Int!
+  BRKFLD3: Int!
+  CURRNIDX: Int!
+  TRXSORCE: String!
+  SOPLNERR: Byte!
+  ORGSEQNM: Int!
+  ITEMCODE: String!
+  PURCHSTAT: Int!
+  DECPLQTY: Int!
+  DECPLCUR: Int!
+  ODECPLCU: Int!
+  QTYTOSHP: Float!
+  XFRSHDOC: Int!
+  EXCEPTIONALDEMAND: Int!
+  TAXSCHID: String!
+  TXSCHSRC: Int!
+  PRSTADCD: String!
+  ShipToName: String!
+  CNTCPRSN: String!
+  ADDRESS1: String!
+  ADDRESS2: String!
+  ADDRESS3: String!
+  CITY: String!
+  STATE: String!
+  ZIPCODE: String!
+  CCode: String!
+  COUNTRY: String!
+  PHONE1: String!
+  PHONE2: String!
+  PHONE3: String!
+  FAXNUMBR: String!
+  Flags: Int!
+  BackoutTradeDisc: Float!
+  OrigBackoutTradeDisc: Float!
+  GPSFOINTEGRATIONID: String!
+  INTEGRATIONSOURCE: Int!
+  INTEGRATIONID: String!
+  CONTNBR: String!
+  CONTLNSEQNBR: Float!
+  CONTSTARTDTE: DateTime!
+  CONTENDDTE: DateTime!
+  CONTITEMNBR: String!
+  CONTSERIALNBR: String!
+  BULKPICKPRNT: Int!
+  INDPICKPRNT: Int!
+  ISLINEINTRA: Int!
+  SOFULFILLMENTBIN: String!
+  MULTIPLEBINS: Int!
+  Print_Phone_NumberGB: Int!
+  DEX_ROW_TS: DateTime!
+  DEX_ROW_ID: Int!
+  proforma: Proforma
+}
+
+type UsrDefinedWorkHistory {
+  SOPTYPE: Int!
+  SOPNUMBE: String!
+  USRDAT01: DateTime!
+  USRDAT02: DateTime!
+  USRTAB01: String!
+  USRTAB09: String!
+  USRTAB03: String!
+  USERDEF1: String!
+  USERDEF2: String!
+  USRDEF03: String!
+  USRDEF04: String!
+  USRDEF05: String!
+  COMMENT_1: String!
+  COMMENT_2: String!
+  COMMENT_3: String!
+  COMMENT_4: String!
+  DEX_ROW_ID: Int!
+  CMMTTEXT: String!
+  proforma: Proforma
+  invoice: Invoice!
+}
+
+type Proforma {
+  SOPTYPE: Int!
+  SOPNUMBE: String!
+  ORIGTYPE: Int!
+  ORIGNUMB: String!
+  DOCID: String!
+  DOCDATE: DateTime!
+  GLPOSTDT: DateTime!
+  QUOTEDAT: DateTime!
+  QUOEXPDA: DateTime!
+  ORDRDATE: DateTime!
+  INVODATE: DateTime!
+  BACKDATE: DateTime!
+  RETUDATE: DateTime!
+  ReqShipDate: DateTime!
+  FUFILDAT: DateTime!
+  ACTLSHIP: DateTime!
+  DISCDATE: DateTime!
+  DUEDATE: DateTime!
+  REPTING: Int!
+  TRXFREQU: Int!
+  TIMEREPD: Int!
+  TIMETREP: Int!
+  DYSTINCR: Int!
+  DTLSTREP: DateTime!
+  DSTBTCH1: String!
+  DSTBTCH2: String!
+  USDOCID1: String!
+  USDOCID2: String!
+  DISCFRGT: Float!
+  ORDAVFRT: Float!
+  DISCMISC: Float!
+  ORDAVMSC: Float!
+  DISAVAMT: Float!
+  ORDAVAMT: Float!
+  DISCRTND: Float!
+  ORDISRTD: Float!
+  DISTKNAM: Float!
+  ORDISTKN: Float!
+  DSCPCTAM: Int!
+  DSCDLRAM: Float!
+  ORDDLRAT: Float!
+  DISAVTKN: Float!
+  ORDATKN: Float!
+  PYMTRMID: String!
+  PRCLEVEL: String!
+  LOCNCODE: String!
+  BCHSOURC: String!
+  BACHNUMB: String!
+  CUSTNMBR: String!
+  CUSTNAME: String!
+  CSTPONBR: String!
+  PROSPECT: Int!
+  MSTRNUMB: Int!
+  PCKSLPNO: String!
+  PICTICNU: String!
+  MRKDNAMT: Float!
+  ORMRKDAM: Float!
+  PRBTADCD: String!
+  PRSTADCD: String!
+  CNTCPRSN: String!
+  ShipToName: String!
+  ADDRESS1: String!
+  ADDRESS2: String!
+  ADDRESS3: String!
+  CITY: String!
+  STATE: String!
+  ZIPCODE: String!
+  CCode: String!
+  COUNTRY: String!
+  PHNUMBR1: String!
+  PHNUMBR2: String!
+  PHONE3: String!
+  FAXNUMBR: String!
+  COMAPPTO: Int!
+  COMMAMNT: Float!
+  OCOMMAMT: Float!
+  CMMSLAMT: Float!
+  ORCOSAMT: Float!
+  NCOMAMNT: Float!
+  ORNCMAMT: Float!
+  SHIPMTHD: String!
+  TRDISAMT: Float!
+  ORTDISAM: Float!
+  TRDISPCT: Int!
+  SUBTOTAL: Float!
+  ORSUBTOT: Float!
+  REMSUBTO: Float!
+  OREMSUBT: Float!
+  EXTDCOST: Float!
+  OREXTCST: Float!
+  FRTAMNT: Float!
+  ORFRTAMT: Float!
+  MISCAMNT: Float!
+  ORMISCAMT: Float!
+  TXENGCLD: Int!
+  TAXEXMT1: String!
+  TAXEXMT2: String!
+  TXRGNNUM: String!
+  TAXSCHID: String!
+  TXSCHSRC: Int!
+  BSIVCTTL: Int!
+  FRTSCHID: String!
+  FRTTXAMT: Float!
+  ORFRTTAX: Float!
+  FRGTTXBL: Int!
+  MSCSCHID: String!
+  MSCTXAMT: Float!
+  ORMSCTAX: Float!
+  MISCTXBL: Int!
+  BKTFRTAM: Float!
+  ORBKTFRT: Float!
+  BKTMSCAM: Float!
+  ORBKTMSC: Float!
+  BCKTXAMT: Float!
+  OBTAXAMT: Float!
+  TXBTXAMT: Float!
+  OTAXTAMT: Float!
+  TAXAMNT: Float!
+  ORTAXAMT: Float!
+  ECTRX: Int!
+  DOCAMNT: Float!
+  ORDOCAMT: Float!
+  PYMTRCVD: Float!
+  ORPMTRVD: Float!
+  DEPRECVD: Float!
+  ORDEPRVD: Float!
+  CODAMNT: Float!
+  ORCODAMT: Float!
+  ACCTAMNT: Float!
+  ORACTAMT: Float!
+  SALSTERR: String!
+  SLPRSNID: String!
+  UPSZONE: String!
+  TIMESPRT: Int!
+  PSTGSTUS: Int!
+  VOIDSTTS: Int!
+  ALLOCABY: Int!
+  NOTEINDX: Float!
+  CURNCYID: String!
+  CURRNIDX: Int!
+  RATETPID: String!
+  EXGTBLID: String!
+  XCHGRATE: Float!
+  DENXRATE: Float!
+  EXCHDATE: DateTime!
+  TIME1: DateTime!
+  RTCLCMTD: Int!
+  MCTRXSTT: Int!
+  TRXSORCE: String!
+  SOPHDRE1: Byte!
+  SOPHDRE2: Byte!
+  SOPLNERR: Byte!
+  SOPHDRFL: Byte!
+  SOPMCERR: Byte!
+  COMMNTID: String!
+  REFRENCE: String!
+  POSTEDDT: DateTime!
+  PTDUSRID: String!
+  USER2ENT: String!
+  CREATDDT: DateTime!
+  MODIFDT: DateTime!
+  Tax_Date: DateTime!
+  APLYWITH: Int!
+  WITHHAMT: Float!
+  SHPPGDOC: Int!
+  CORRCTN: Int!
+  SIMPLIFD: Int!
+  CORRNXST: Int!
+  DOCNCORR: String!
+  SEQNCORR: Int!
+  SALEDATE: DateTime!
+  SOPHDRE3: Byte!
+  EXCEPTIONALDEMAND: Int!
+  Flags: Int!
+  BackoutTradeDisc: Float!
+  OrigBackoutTradeDisc: Float!
+  GPSFOINTEGRATIONID: String!
+  INTEGRATIONSOURCE: Int!
+  INTEGRATIONID: String!
+  SOPSTATUS: Int!
+  SHIPCOMPLETE: Int!
+  DIRECTDEBIT: Int!
+  WorkflowApprStatCreditLm: Int!
+  WorkflowPriorityCreditLm: Int!
+  WorkflowApprStatusQuote: Int!
+  WorkflowPriorityQuote: Int!
+  Workflow_Status: Int!
+  ContractExchangeRateStat: Int!
+  Print_Phone_NumberGB: Int!
+  DEX_ROW_TS: DateTime!
+  DEX_ROW_ID: Int!
+  UNITPRCE: Float!
+  ORUNTPRC: Float!
+  LNITMSEQ: Int!
+  client: [Client!]
+  detail: [ProformasDetail!]
+  sales_taxes_work_history: [SalesTaxesWorkHistory!]!
+  work_history: [UsrDefinedWorkHistory!]
+}
+
+type SalesTaxesWorkHistory {
+  SOPTYPE: Int!
+  SOPNUMBE: String!
+  LNITMSEQ: Int!
+  TAXDTLID: String!
+  ACTINDX: Int!
+  BKOUTTAX: Int!
+  TXABLETX: Int!
+  STAXAMNT: Float!
+  ORSLSTAX: Float!
+  FRTTXAMT: Float!
+  ORFRTTAX: Float!
+  MSCTXAMT: Float!
+  ORMSCTAX: Float!
+  TAXDTSLS: Float!
+  ORTOTSLS: Float!
+  TDTTXSLS: Float!
+  ORTXSLS: Float!
+  TXDTOTTX: Float!
+  OTTAXPON: Float!
+  DELETE1: Int!
+  CURRNIDX: Int!
+  TRXSORCE: String!
+  TXDTLPCTAMT: Float!
+  DEX_ROW_ID: Int!
+  proforma: Proforma!
+  invoice: Invoice!
+}
+
+type Invoice {
+  SOPTYPE: Int!
+  SOPNUMBE: String!
+  ORIGTYPE: Int!
+  ORIGNUMB: String!
+  DOCID: String!
+  DOCDATE: DateTime!
+  GLPOSTDT: DateTime!
+  QUOTEDAT: DateTime!
+  QUOEXPDA: DateTime!
+  ORDRDATE: DateTime!
+  INVODATE: DateTime!
+  BACKDATE: DateTime!
+  RETUDATE: DateTime!
+  ReqShipDate: DateTime!
+  FUFILDAT: DateTime!
+  ACTLSHIP: DateTime!
+  DISCDATE: DateTime!
+  DUEDATE: DateTime!
+  REPTING: Int!
+  TRXFREQU: Int!
+  TIMEREPD: Int!
+  TIMETREP: Int!
+  DYSTINCR: Int!
+  DTLSTREP: DateTime!
+  DSTBTCH1: String!
+  DSTBTCH2: String!
+  USDOCID1: String!
+  USDOCID2: String!
+  DISCFRGT: Float!
+  ORDAVFRT: Float!
+  DISCMISC: Float!
+  ORDAVMSC: Float!
+  DISAVAMT: Float!
+  ORDAVAMT: Float!
+  DISCRTND: Float!
+  ORDISRTD: Float!
+  DISTKNAM: Float!
+  ORDISTKN: Float!
+  DSCPCTAM: Int!
+  DSCDLRAM: Float!
+  ORDDLRAT: Float!
+  DISAVTKN: Float!
+  ORDATKN: Float!
+  PYMTRMID: String!
+  PRCLEVEL: String!
+  LOCNCODE: String!
+  BCHSOURC: String!
+  BACHNUMB: String!
+  CUSTNMBR: String!
+  CUSTNAME: String!
+  CSTPONBR: String!
+  PROSPECT: Int!
+  MSTRNUMB: Int!
+  PCKSLPNO: String!
+  PICTICNU: String!
+  MRKDNAMT: Float!
+  ORMRKDAM: Float!
+  PRBTADCD: String!
+  PRSTADCD: String!
+  CNTCPRSN: String!
+  ShipToName: String!
+  ADDRESS1: String!
+  ADDRESS2: String!
+  ADDRESS3: String!
+  CITY: String!
+  STATE: String!
+  ZIPCODE: String!
+  CCode: String!
+  COUNTRY: String!
+  PHNUMBR1: String!
+  PHNUMBR2: String!
+  PHONE3: String!
+  FAXNUMBR: String!
+  COMAPPTO: Int!
+  COMMAMNT: Float!
+  OCOMMAMT: Float!
+  CMMSLAMT: Float!
+  ORCOSAMT: Float!
+  NCOMAMNT: Float!
+  ORNCMAMT: Float!
+  SHIPMTHD: String!
+  TRDISAMT: Float!
+  ORTDISAM: Float!
+  TRDISPCT: Int!
+  SUBTOTAL: Float!
+  ORSUBTOT: Float!
+  REMSUBTO: Float!
+  OREMSUBT: Float!
+  EXTDCOST: Float!
+  OREXTCST: Float!
+  FRTAMNT: Float!
+  ORFRTAMT: Float!
+  MISCAMNT: Float!
+  ORMISCAMT: Float!
+  TXENGCLD: Int!
+  TAXEXMT1: String!
+  TAXEXMT2: String!
+  TXRGNNUM: String!
+  TAXSCHID: String!
+  TXSCHSRC: Int!
+  BSIVCTTL: Int!
+  FRTSCHID: String!
+  FRTTXAMT: Float!
+  ORFRTTAX: Float!
+  FRGTTXBL: Int!
+  MSCSCHID: String!
+  MSCTXAMT: Float!
+  ORMSCTAX: Float!
+  MISCTXBL: Int!
+  BKTFRTAM: Float!
+  ORBKTFRT: Float!
+  BKTMSCAM: Float!
+  ORBKTMSC: Float!
+  BCKTXAMT: Float!
+  OBTAXAMT: Float!
+  TXBTXAMT: Float!
+  OTAXTAMT: Float!
+  TAXAMNT: Float!
+  ORTAXAMT: Float!
+  ECTRX: Int!
+  DOCAMNT: Float!
+  ORDOCAMT: Float!
+  PYMTRCVD: Float!
+  ORPMTRVD: Float!
+  DEPRECVD: Float!
+  ORDEPRVD: Float!
+  CODAMNT: Float!
+  ORCODAMT: Float!
+  ACCTAMNT: Float!
+  ORACTAMT: Float!
+  SALSTERR: String!
+  SLPRSNID: String!
+  UPSZONE: String!
+  TIMESPRT: Int!
+  PSTGSTUS: Int!
+  VOIDSTTS: Int!
+  ALLOCABY: Int!
+  NOTEINDX: Float!
+  CURNCYID: String!
+  CURRNIDX: Int!
+  RATETPID: String!
+  EXGTBLID: String!
+  XCHGRATE: Float!
+  DENXRATE: Float!
+  EXCHDATE: DateTime!
+  TIME1: DateTime!
+  RTCLCMTD: Int!
+  MCTRXSTT: Int!
+  TRXSORCE: String!
+  SOPHDRE1: Byte!
+  SOPHDRE2: Byte!
+  SOPLNERR: Byte!
+  SOPHDRFL: Byte!
+  COMMNTID: String!
+  REFRENCE: String!
+  POSTEDDT: DateTime!
+  PTDUSRID: String!
+  USER2ENT: String!
+  CREATDDT: DateTime!
+  MODIFDT: DateTime!
+  Tax_Date: DateTime!
+  APLYWITH: Int!
+  WITHHAMT: Float!
+  SHPPGDOC: Int!
+  CORRCTN: Int!
+  SIMPLIFD: Int!
+  DOCNCORR: String!
+  SEQNCORR: Int!
+  SALEDATE: DateTime!
+  EXCEPTIONALDEMAND: Int!
+  Flags: Int!
+  SOPSTATUS: Int!
+  SHIPCOMPLETE: Int!
+  DIRECTDEBIT: Int!
+  WorkflowApprStatCreditLm: Int!
+  WorkflowPriorityCreditLm: Int!
+  WorkflowApprStatusQuote: Int!
+  WorkflowPriorityQuote: Int!
+  Workflow_Status: Int!
+  ContractExchangeRateStat: Int!
+  Print_Phone_NumberGB: Int!
+  DEX_ROW_TS: DateTime!
+  DEX_ROW_ID: Int!
+  client: Client!
+  details: InvoiceDetail!
+  rm_open_transactions: [RmOpenTransaction!]
+  sale_tax_work_history: [SalesTaxesWorkHistory!]
+}
+
+type ClientsAccount {
+  CUSTNMBR: String!
+  ADRSCODE: String!
+  SLPRSNID: String!
+  UPSZONE: String!
+  SHIPMTHD: String!
+  TAXSCHID: String!
+  CNTCPRSN: String!
+  ADDRESS1: String!
+  ADDRESS2: String!
+  ADDRESS3: String!
+  COUNTRY: String!
+  CITY: String!
+  STATE: String!
+  ZIP: String!
+  PHONE1: String!
+  PHONE2: String!
+  PHONE3: String!
+  FAX: String!
+  MODIFDT: DateTime!
+  CREATDDT: DateTime!
+  GPSFOINTEGRATIONID: String!
+  INTEGRATIONSOURCE: Int!
+  INTEGRATIONID: String!
+  CCode: String!
+  DECLID: String!
+  LOCNCODE: String!
+  SALSTERR: String!
+  USERDEF1: String!
+  USERDEF2: String!
+  ShipToName: String!
+  Print_Phone_NumberGB: Int!
+  DEX_ROW_TS: DateTime!
+  DEX_ROW_ID: Int!
+  client: Client!
+}
+
+type ClientsEmail {
+  CUSTNMBR: String!
+  Email_Type: Int!
+  Email_Recipient: String!
+  DEX_ROW_ID: Int!
+  client: Client!
+}
+
+type Client {
+  CUSTNMBR: String!
+  CUSTNAME: String!
+  CUSTCLAS: String!
+  CPRCSTNM: String!
+  CNTCPRSN: String!
+  STMTNAME: String!
+  SHRTNAME: String!
+  ADRSCODE: String!
+  UPSZONE: String!
+  SHIPMTHD: String!
+  TAXSCHID: String!
+  ADDRESS1: String!
+  ADDRESS2: String!
+  ADDRESS3: String!
+  COUNTRY: String!
+  CITY: String!
+  STATE: String!
+  ZIP: String!
+  PHONE1: String!
+  PHONE2: String!
+  PHONE3: String!
+  FAX: String!
+  PRBTADCD: String!
+  PRSTADCD: String!
+  STADDRCD: String!
+  SLPRSNID: String!
+  CHEKBKID: String!
+  PYMTRMID: String!
+  CRLMTTYP: Int!
+  CRLMTAMT: Float!
+  CRLMTPER: Int!
+  CRLMTPAM: Float!
+  CURNCYID: String!
+  RATETPID: String!
+  CUSTDISC: Int!
+  PRCLEVEL: String!
+  MINPYTYP: Int!
+  MINPYDLR: Float!
+  MINPYPCT: Int!
+  FNCHATYP: Int!
+  FNCHPCNT: Int!
+  FINCHDLR: Float!
+  MXWOFTYP: Int!
+  MXWROFAM: Float!
+  COMMENT1: String!
+  COMMENT2: String!
+  USERDEF1: String!
+  USERDEF2: String!
+  TAXEXMT1: String!
+  TAXEXMT2: String!
+  TXRGNNUM: String!
+  BALNCTYP: Int!
+  STMTCYCL: Int!
+  BANKNAME: String!
+  BNKBRNCH: String!
+  SALSTERR: String!
+  DEFCACTY: Int!
+  RMCSHACC: Int!
+  RMARACC: Int!
+  RMSLSACC: Int!
+  RMIVACC: Int!
+  RMCOSACC: Int!
+  RMTAKACC: Int!
+  RMAVACC: Int!
+  RMFCGACC: Int!
+  RMWRACC: Int!
+  RMSORACC: Int!
+  FRSTINDT: DateTime!
+  INACTIVE: Int!
+  HOLD: Int!
+  CRCARDID: String!
+  CRCRDNUM: String!
+  CCRDXPDT: DateTime!
+  KPDSTHST: Int!
+  KPCALHST: Int!
+  KPERHIST: Int!
+  KPTRXHST: Int!
+  NOTEINDX: Float!
+  CREATDDT: DateTime!
+  MODIFDT: DateTime!
+  Revalue_Customer: Int!
+  Post_Results_To: Int!
+  FINCHID: String!
+  GOVCRPID: String!
+  GOVINDID: String!
+  DISGRPER: Int!
+  DUEGRPER: Int!
+  DOCFMTID: String!
+  Send_Email_Statements: Int!
+  USERLANG: Int!
+  GPSFOINTEGRATIONID: String!
+  INTEGRATIONSOURCE: Int!
+  INTEGRATIONID: String!
+  ORDERFULFILLDEFAULT: Int!
+  CUSTPRIORITY: Int!
+  CCode: String!
+  DECLID: String!
+  RMOvrpymtWrtoffAcctIdx: Int!
+  SHIPCOMPLETE: Int!
+  CBVAT: Int!
+  INCLUDEINDP: Int!
+  DEX_ROW_TS: DateTime!
+  DEX_ROW_ID: Int!
+  SOPNUMBE: String!
+  PAGE: Int!
+  accounts: [ClientsAccount!]
+  email: ClientsEmail
+  proformas: [Proforma!]
+  invoices: [Invoice!]
+}
+
+type PriceBookWork {
+  PRCBKID: String!
+  PRODTCOD: String!
+  LINKCODE: String!
+  SEQNUMBR: Int!
+  DEX_ROW_ID: Int!
+}
+
+type TasasCambio {
+  EXGTBLID: String!
+  CURNCYID: String!
+  EXCHDATE: DateTime!
+  TIME1: DateTime!
+  XCHGRATE: Float!
+  EXPNDATE: DateTime!
+  DEX_ROW_ID: Int!
+  proforma: Proforma!
+}
+
+type Query {
+  clients: [Client!]!
+  client(id: String!): Client!
+  clientAccountsByRIF(CUSTNMBR: String!): Client
+  clientProformasByRIF(CUSTNMBR: String!, PAGE: Int!): Client
+  clientInvoicesByRIF(CUSTNMBR: String!): Client
+  clientProformasFluent(CUSTNMBR: String!): [Client!]
+  clientsEmails: [ClientsEmail!]!
+  clientsEmail(id: Int!): ClientsEmail!
+  clientsAccounts: [ClientsAccount!]!
+  clientsAccount(id: Int!): ClientsAccount!
+  proformasS: [Proforma!]!
+  proformabyCUSTNMBR(CUSTNMBR: String!): [Proforma!]!
+  proformasByCustomerRIF(CUSTNMBR: String!): Proforma!
+  proformasBySopnumbe(SOPNUMBE: String!): Proforma!
+  invoices: [Invoice!]!
+  invoice(SOPNUMBE: String!): Invoice!
+  proformas: [ProformasDetail!]!
+  proformasdetail(SOPNUMBE: String!): ProformasDetail
+  invoiceDetails: [InvoiceDetail!]!
+  invoiceDetail(id: Int!): InvoiceDetail!
+  rmOpenTransactions: [RmOpenTransaction!]!
+  rmOpenTransaction(DOCNUMBR: String!): RmOpenTransaction!
+  priceBookWork(id: Int!): PriceBookWork!
+  sales_taxes_work_history: [SalesTaxesWorkHistory!]!
+  sales_taxes_work_historys(SOPNUMBE: String!): SalesTaxesWorkHistory!
+  work_history: [TasasCambio!]!
+  work_historys(SOPNUMBE: String!): UsrDefinedWorkHistory!
+}
+
+type Mutation {
+  createClient(createClientInput: CreateClientInput!): Client!
+  updateClient(updateClientInput: UpdateClientInput!): Client!
+  removeClient(id: Int!): Client!
+  createClientsEmail(createClientsEmailInput: CreateClientsEmailInput!): ClientsEmail!
+  updateClientsEmail(updateClientsEmailInput: UpdateClientsEmailInput!): ClientsEmail!
+  removeClientsEmail(id: Int!): ClientsEmail!
+  createClientsAccount(createClientsAccountInput: CreateClientsAccountInput!): ClientsAccount!
+  updateClientsAccount(updateClientsAccountInput: UpdateClientsAccountInput!): ClientsAccount!
+  removeClientsAccount(id: Int!): ClientsAccount!
+  createProforma(createProformaInput: CreateProformaInput!): Proforma!
+  updateProforma(updateProformaInput: UpdateProformaInput!): Proforma!
+  removeProforma(id: Int!): Proforma!
+  createInvoice(createInvoiceInput: CreateInvoiceInput!): Invoice!
+  updateInvoice(updateInvoiceInput: UpdateInvoiceInput!): Invoice!
+  removeInvoice(id: Int!): Invoice!
+  createProformasDetail(createProformasDetailInput: CreateProformasDetailInput!): ProformasDetail!
+  updateProformasDetail(updateProformasDetailInput: UpdateProformasDetailInput!): ProformasDetail!
+  removeProformasDetail(id: Int!): ProformasDetail!
+  createInvoiceDetail(createInvoiceDetailInput: CreateInvoiceDetailInput!): InvoiceDetail!
+  updateInvoiceDetail(updateInvoiceDetailInput: UpdateInvoiceDetailInput!): InvoiceDetail!
+  removeInvoiceDetail(id: Int!): InvoiceDetail!
+  createRmOpenTransaction(createRmOpenTransactionInput: CreateRmOpenTransactionInput!): RmOpenTransaction!
+  updateRmOpenTransaction(updateRmOpenTransactionInput: UpdateRmOpenTransactionInput!): RmOpenTransaction!
+  removeRmOpenTransaction(id: Int!): RmOpenTransaction!
+  createPriceBookWork(createPriceBookWorkInput: CreatePriceBookWorkInput!): PriceBookWork!
+  updatePriceBookWork(updatePriceBookWorkInput: UpdatePriceBookWorkInput!): PriceBookWork!
+  removePriceBookWork(id: Int!): PriceBookWork!
+  createSalesTaxWorkHistory(createSalesTaxWorkHistoryInput: CreateSalesTaxWorkHistoryInput!): SalesTaxesWorkHistory!
+  updateSalesTaxWorkHistory(updateSalesTaxWorkHistoryInput: UpdateSalesTaxWorkHistoryInput!): SalesTaxesWorkHistory!
+  removeSalesTaxWorkHistory(id: Int!): SalesTaxesWorkHistory!
+  createUsrDefinedWorkHistory(createUsrDefinedWorkHistoryInput: CreateUsrDefinedWorkHistoryInput!): UsrDefinedWorkHistory!
+  updateUsrDefinedWorkHistory(updateUsrDefinedWorkHistoryInput: UpdateUsrDefinedWorkHistoryInput!): UsrDefinedWorkHistory!
+  removeUsrDefinedWorkHistory(id: Int!): UsrDefinedWorkHistory!
+  updateTasasCambio(updateTasasCambioInput: UpdateTasacambioInput!): TasasCambio!
+  removeTasasCambio(id: Int!): TasasCambio!
+}
+
+input CreateClientInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateClientInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateClientsEmailInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateClientsEmailInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateClientsAccountInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateClientsAccountInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateProformaInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProformaInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateInvoiceInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateInvoiceInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateProformasDetailInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProformasDetailInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateInvoiceDetailInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateInvoiceDetailInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateRmOpenTransactionInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateRmOpenTransactionInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreatePriceBookWorkInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdatePriceBookWorkInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateSalesTaxWorkHistoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateSalesTaxWorkHistoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateUsrDefinedWorkHistoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUsrDefinedWorkHistoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateTasacambioInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}

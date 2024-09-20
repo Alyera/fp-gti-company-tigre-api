@@ -1,0 +1,1046 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+//generator typegraphql {
+//  provider            = "typegraphql-prisma"
+//  output              = "../prisma/generated/type-graphql"
+//  formatGeneratedCode = "prettier"
+//}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model Client {
+  CUSTNMBR               String   @unique @db.Char(15)
+  CUSTNAME               String   @db.Char(65)
+  CUSTCLAS               String   @db.Char(15)
+  CPRCSTNM               String   @db.Char(15)
+  CNTCPRSN               String   @db.Char(61)
+  STMTNAME               String   @db.Char(65)
+  SHRTNAME               String   @db.Char(15)
+  ADRSCODE               String   @db.Char(15)
+  UPSZONE                String   @db.Char(3)
+  SHIPMTHD               String   @db.Char(15)
+  TAXSCHID               String   @db.Char(15)
+  ADDRESS1               String   @db.Char(61)
+  ADDRESS2               String   @db.Char(61)
+  ADDRESS3               String   @db.Char(61)
+  COUNTRY                String   @db.Char(61)
+  CITY                   String   @db.Char(35)
+  STATE                  String   @db.Char(29)
+  ZIP                    String   @db.Char(11)
+  PHONE1                 String   @db.Char(21)
+  PHONE2                 String   @db.Char(21)
+  PHONE3                 String   @db.Char(21)
+  FAX                    String   @db.Char(21)
+  PRBTADCD               String   @db.Char(15)
+  PRSTADCD               String   @db.Char(15)
+  STADDRCD               String   @db.Char(15)
+  SLPRSNID               String   @db.Char(15)
+  CHEKBKID               String   @db.Char(15)
+  PYMTRMID               String   @db.Char(21)
+  CRLMTTYP               Int      @db.SmallInt
+  CRLMTAMT               Decimal  @db.Decimal(19, 5)
+  CRLMTPER               Int      @db.SmallInt
+  CRLMTPAM               Decimal  @db.Decimal(19, 5)
+  CURNCYID               String   @db.Char(15)
+  RATETPID               String   @db.Char(15)
+  CUSTDISC               Int      @db.SmallInt
+  PRCLEVEL               String   @db.Char(11)
+  MINPYTYP               Int      @db.SmallInt
+  MINPYDLR               Decimal  @db.Decimal(19, 5)
+  MINPYPCT               Int      @db.SmallInt
+  FNCHATYP               Int      @db.SmallInt
+  FNCHPCNT               Int      @db.SmallInt
+  FINCHDLR               Decimal  @db.Decimal(19, 5)
+  MXWOFTYP               Int      @db.SmallInt
+  MXWROFAM               Decimal  @db.Decimal(19, 5)
+  COMMENT1               String   @db.Char(31)
+  COMMENT2               String   @db.Char(31)
+  USERDEF1               String   @db.Char(21)
+  USERDEF2               String   @db.Char(21)
+  TAXEXMT1               String   @db.Char(25)
+  TAXEXMT2               String   @db.Char(25)
+  TXRGNNUM               String   @db.Char(25)
+  BALNCTYP               Int      @db.SmallInt
+  STMTCYCL               Int      @db.SmallInt
+  BANKNAME               String   @db.Char(31)
+  BNKBRNCH               String   @db.Char(21)
+  SALSTERR               String   @db.Char(15)
+  DEFCACTY               Int      @db.SmallInt
+  RMCSHACC               Int
+  RMARACC                Int
+  RMSLSACC               Int
+  RMIVACC                Int
+  RMCOSACC               Int
+  RMTAKACC               Int
+  RMAVACC                Int
+  RMFCGACC               Int
+  RMWRACC                Int
+  RMSORACC               Int
+  FRSTINDT               DateTime @db.DateTime
+  INACTIVE               Int      @db.TinyInt
+  HOLD                   Int      @db.TinyInt
+  CRCARDID               String   @db.Char(15)
+  CRCRDNUM               String   @db.Char(21)
+  CCRDXPDT               DateTime @db.DateTime
+  KPDSTHST               Int      @db.TinyInt
+  KPCALHST               Int      @db.TinyInt
+  KPERHIST               Int      @db.TinyInt
+  KPTRXHST               Int      @db.TinyInt
+  NOTEINDX               Decimal  @db.Decimal(19, 5)
+  CREATDDT               DateTime @db.DateTime
+  MODIFDT                DateTime @db.DateTime
+  Revalue_Customer       Int      @db.TinyInt
+  Post_Results_To        Int      @db.SmallInt
+  FINCHID                String   @db.Char(15)
+  GOVCRPID               String   @db.Char(31)
+  GOVINDID               String   @db.Char(31)
+  DISGRPER               Int      @db.SmallInt
+  DUEGRPER               Int      @db.SmallInt
+  DOCFMTID               String   @db.Char(15)
+  Send_Email_Statements  Int      @db.TinyInt
+  USERLANG               Int      @db.SmallInt
+  GPSFOINTEGRATIONID     String   @db.Char(31)
+  INTEGRATIONSOURCE      Int      @db.SmallInt
+  INTEGRATIONID          String   @db.Char(31)
+  ORDERFULFILLDEFAULT    Int      @db.SmallInt
+  CUSTPRIORITY           Int      @db.SmallInt
+  CCode                  String   @db.Char(7)
+  DECLID                 String   @db.Char(15)
+  RMOvrpymtWrtoffAcctIdx Int
+  SHIPCOMPLETE           Int      @db.TinyInt
+  CBVAT                  Int      @db.TinyInt
+  INCLUDEINDP            Int      @db.TinyInt
+  DEX_ROW_TS             DateTime @default(dbgenerated("getutcdate()"), map: "DF__RM00101__DEX_ROW__63649880") @db.DateTime
+  DEX_ROW_ID             Int      @default(autoincrement())
+  PAGE                   Int
+  
+  accounts             ClientAccounts[]
+  email                ClientsEmail[]
+  proformas            Proforma[]
+  invoices             Invoice[]
+  rm_open_transactions RMOpenTransactions[]
+
+  @@id([CUSTNMBR], map: "PKRM00101", clustered: false)
+  @@map("RM00101")
+}
+
+model ClientAccounts {
+  CUSTNMBR             String   @db.Char(15)
+  ADRSCODE             String   @db.Char(15)
+  SLPRSNID             String   @db.Char(15)
+  UPSZONE              String   @db.Char(3)
+  SHIPMTHD             String   @db.Char(15)
+  TAXSCHID             String   @db.Char(15)
+  CNTCPRSN             String   @db.Char(61)
+  ADDRESS1             String   @db.Char(61)
+  ADDRESS2             String   @db.Char(61)
+  ADDRESS3             String   @db.Char(61)
+  COUNTRY              String   @db.Char(61)
+  CITY                 String   @db.Char(35)
+  STATE                String   @db.Char(29)
+  ZIP                  String   @db.Char(11)
+  PHONE1               String   @db.Char(21)
+  PHONE2               String   @db.Char(21)
+  PHONE3               String   @db.Char(21)
+  FAX                  String   @db.Char(21)
+  MODIFDT              DateTime @db.DateTime
+  CREATDDT             DateTime @db.DateTime
+  GPSFOINTEGRATIONID   String   @db.Char(31)
+  INTEGRATIONSOURCE    Int      @db.SmallInt
+  INTEGRATIONID        String   @db.Char(31)
+  CCode                String   @db.Char(7)
+  DECLID               String   @db.Char(15)
+  LOCNCODE             String   @db.Char(11)
+  SALSTERR             String   @db.Char(15)
+  USERDEF1             String   @db.Char(21)
+  USERDEF2             String   @db.Char(21)
+  ShipToName           String   @db.Char(65)
+  Print_Phone_NumberGB Int      @db.SmallInt
+  DEX_ROW_TS           DateTime @default(dbgenerated("getutcdate()"), map: "DF__RM00102__DEX_ROW__08EB22EA") @db.DateTime
+  DEX_ROW_ID           Int      @default(autoincrement())
+
+  client Client? @relation(fields: [CUSTNMBR], references: [CUSTNMBR])
+
+  @@id([CUSTNMBR, ADRSCODE], map: "PKRM00102", clustered: false)
+  @@map("RM00102")
+}
+
+model ClientsEmail {
+  CUSTNMBR        String @db.Char(15)
+  Email_Type      Int    @db.SmallInt
+  Email_Recipient String @db.Char(81)
+  DEX_ROW_ID      Int    @default(autoincrement())
+
+  client Client @relation(fields: [CUSTNMBR], references: [CUSTNMBR])
+
+  @@id([CUSTNMBR, Email_Type, Email_Recipient], map: "PKRM00106", clustered: false)
+  @@map("RM00106")
+}
+
+model Proforma {
+  SOPTYPE                  Int      @db.SmallInt
+  SOPNUMBE                 String   @unique @db.Char(21)
+  ORIGTYPE                 Int      @db.SmallInt
+  ORIGNUMB                 String   @db.Char(21)
+  DOCID                    String   @db.Char(15)
+  DOCDATE                  DateTime @db.DateTime
+  GLPOSTDT                 DateTime @db.DateTime
+  QUOTEDAT                 DateTime @db.DateTime
+  QUOEXPDA                 DateTime @db.DateTime
+  ORDRDATE                 DateTime @db.DateTime
+  INVODATE                 DateTime @db.DateTime
+  BACKDATE                 DateTime @db.DateTime
+  RETUDATE                 DateTime @db.DateTime
+  ReqShipDate              DateTime @db.DateTime
+  FUFILDAT                 DateTime @db.DateTime
+  ACTLSHIP                 DateTime @db.DateTime
+  DISCDATE                 DateTime @db.DateTime
+  DUEDATE                  DateTime @db.DateTime
+  REPTING                  Int      @db.TinyInt
+  TRXFREQU                 Int      @db.SmallInt
+  TIMEREPD                 Int      @db.SmallInt
+  TIMETREP                 Int      @db.SmallInt
+  DYSTINCR                 Int      @db.SmallInt
+  DTLSTREP                 DateTime @db.DateTime
+  DSTBTCH1                 String   @db.Char(15)
+  DSTBTCH2                 String   @db.Char(15)
+  USDOCID1                 String   @db.Char(15)
+  USDOCID2                 String   @db.Char(15)
+  DISCFRGT                 Decimal  @db.Decimal(19, 5)
+  ORDAVFRT                 Decimal  @db.Decimal(19, 5)
+  DISCMISC                 Decimal  @db.Decimal(19, 5)
+  ORDAVMSC                 Decimal  @db.Decimal(19, 5)
+  DISAVAMT                 Decimal  @db.Decimal(19, 5)
+  ORDAVAMT                 Decimal  @db.Decimal(19, 5)
+  DISCRTND                 Decimal  @db.Decimal(19, 5)
+  ORDISRTD                 Decimal  @db.Decimal(19, 5)
+  DISTKNAM                 Decimal  @db.Decimal(19, 5)
+  ORDISTKN                 Decimal  @db.Decimal(19, 5)
+  DSCPCTAM                 Int      @db.SmallInt
+  DSCDLRAM                 Decimal  @db.Decimal(19, 5)
+  ORDDLRAT                 Decimal  @db.Decimal(19, 5)
+  DISAVTKN                 Decimal  @db.Decimal(19, 5)
+  ORDATKN                  Decimal  @db.Decimal(19, 5)
+  PYMTRMID                 String   @db.Char(21)
+  PRCLEVEL                 String   @db.Char(11)
+  LOCNCODE                 String   @db.Char(11)
+  BCHSOURC                 String   @db.Char(15)
+  BACHNUMB                 String   @db.Char(15)
+  CUSTNMBR                 String   @db.Char(15)
+  CUSTNAME                 String   @db.Char(65)
+  CSTPONBR                 String   @db.Char(21)
+  PROSPECT                 Int      @db.SmallInt
+  MSTRNUMB                 Int
+  PCKSLPNO                 String   @db.Char(21)
+  PICTICNU                 String   @db.Char(21)
+  MRKDNAMT                 Decimal  @db.Decimal(19, 5)
+  ORMRKDAM                 Decimal  @db.Decimal(19, 5)
+  PRBTADCD                 String   @db.Char(15)
+  PRSTADCD                 String   @db.Char(15)
+  CNTCPRSN                 String   @db.Char(61)
+  ShipToName               String   @db.Char(65)
+  ADDRESS1                 String   @db.Char(61)
+  ADDRESS2                 String   @db.Char(61)
+  ADDRESS3                 String   @db.Char(61)
+  CITY                     String   @db.Char(35)
+  STATE                    String   @db.Char(29)
+  ZIPCODE                  String   @db.Char(11)
+  CCode                    String   @db.Char(7)
+  COUNTRY                  String   @db.Char(61)
+  PHNUMBR1                 String   @db.Char(21)
+  PHNUMBR2                 String   @db.Char(21)
+  PHONE3                   String   @db.Char(21)
+  FAXNUMBR                 String   @db.Char(21)
+  COMAPPTO                 Int      @db.SmallInt
+  COMMAMNT                 Decimal  @db.Decimal(19, 5)
+  OCOMMAMT                 Decimal  @db.Decimal(19, 5)
+  CMMSLAMT                 Decimal  @db.Decimal(19, 5)
+  ORCOSAMT                 Decimal  @db.Decimal(19, 5)
+  NCOMAMNT                 Decimal  @db.Decimal(19, 5)
+  ORNCMAMT                 Decimal  @db.Decimal(19, 5)
+  SHIPMTHD                 String   @db.Char(15)
+  TRDISAMT                 Decimal  @db.Decimal(19, 5)
+  ORTDISAM                 Decimal  @db.Decimal(19, 5)
+  TRDISPCT                 Int      @db.SmallInt
+  SUBTOTAL                 Decimal  @db.Decimal(19, 5)
+  ORSUBTOT                 Decimal  @db.Decimal(19, 5)
+  REMSUBTO                 Decimal  @db.Decimal(19, 5)
+  OREMSUBT                 Decimal  @db.Decimal(19, 5)
+  EXTDCOST                 Decimal  @db.Decimal(19, 5)
+  OREXTCST                 Decimal  @db.Decimal(19, 5)
+  FRTAMNT                  Decimal  @db.Decimal(19, 5)
+  ORFRTAMT                 Decimal  @db.Decimal(19, 5)
+  MISCAMNT                 Decimal  @db.Decimal(19, 5)
+  ORMISCAMT                Decimal  @db.Decimal(19, 5)
+  TXENGCLD                 Int      @db.TinyInt
+  TAXEXMT1                 String   @db.Char(25)
+  TAXEXMT2                 String   @db.Char(25)
+  TXRGNNUM                 String   @db.Char(25)
+  TAXSCHID                 String   @db.Char(15)
+  TXSCHSRC                 Int      @db.SmallInt
+  BSIVCTTL                 Int      @db.TinyInt
+  FRTSCHID                 String   @db.Char(15)
+  FRTTXAMT                 Decimal  @db.Decimal(19, 5)
+  ORFRTTAX                 Decimal  @db.Decimal(19, 5)
+  FRGTTXBL                 Int      @db.SmallInt
+  MSCSCHID                 String   @db.Char(15)
+  MSCTXAMT                 Decimal  @db.Decimal(19, 5)
+  ORMSCTAX                 Decimal  @db.Decimal(19, 5)
+  MISCTXBL                 Int      @db.SmallInt
+  BKTFRTAM                 Decimal  @db.Decimal(19, 5)
+  ORBKTFRT                 Decimal  @db.Decimal(19, 5)
+  BKTMSCAM                 Decimal  @db.Decimal(19, 5)
+  ORBKTMSC                 Decimal  @db.Decimal(19, 5)
+  BCKTXAMT                 Decimal  @db.Decimal(19, 5)
+  OBTAXAMT                 Decimal  @db.Decimal(19, 5)
+  TXBTXAMT                 Decimal  @db.Decimal(19, 5)
+  OTAXTAMT                 Decimal  @db.Decimal(19, 5)
+  TAXAMNT                  Decimal  @db.Decimal(19, 5)
+  ORTAXAMT                 Decimal  @db.Decimal(19, 5)
+  ECTRX                    Int      @db.TinyInt
+  DOCAMNT                  Decimal  @db.Decimal(19, 5)
+  ORDOCAMT                 Decimal  @db.Decimal(19, 5)
+  PYMTRCVD                 Decimal  @db.Decimal(19, 5)
+  ORPMTRVD                 Decimal  @db.Decimal(19, 5)
+  DEPRECVD                 Decimal  @db.Decimal(19, 5)
+  ORDEPRVD                 Decimal  @db.Decimal(19, 5)
+  CODAMNT                  Decimal  @db.Decimal(19, 5)
+  ORCODAMT                 Decimal  @db.Decimal(19, 5)
+  ACCTAMNT                 Decimal  @db.Decimal(19, 5)
+  ORACTAMT                 Decimal  @db.Decimal(19, 5)
+  SALSTERR                 String   @db.Char(15)
+  SLPRSNID                 String   @db.Char(15)
+  UPSZONE                  String   @db.Char(3)
+  TIMESPRT                 Int      @db.SmallInt
+  PSTGSTUS                 Int      @db.SmallInt
+  VOIDSTTS                 Int      @db.SmallInt
+  ALLOCABY                 Int      @db.SmallInt
+  NOTEINDX                 Decimal  @db.Decimal(19, 5)
+  CURNCYID                 String   @db.Char(15)
+  CURRNIDX                 Int      @db.SmallInt
+  RATETPID                 String   @db.Char(15)
+  EXGTBLID                 String   @db.Char(15)
+  XCHGRATE                 Decimal  @db.Decimal(19, 7)
+  DENXRATE                 Decimal  @db.Decimal(19, 7)
+  EXCHDATE                 DateTime @db.DateTime
+  TIME1                    DateTime @db.DateTime
+  RTCLCMTD                 Int      @db.SmallInt
+  MCTRXSTT                 Int      @db.SmallInt
+  TRXSORCE                 String   @db.Char(13)
+  SOPHDRE1                 Bytes    @db.Binary(4)
+  SOPHDRE2                 Bytes    @db.Binary(4)
+  SOPLNERR                 Bytes    @db.Binary(4)
+  SOPHDRFL                 Bytes    @db.Binary(4)
+  SOPMCERR                 Bytes    @db.Binary(4)
+  COMMNTID                 String   @db.Char(15)
+  REFRENCE                 String   @db.Char(31)
+  POSTEDDT                 DateTime @db.DateTime
+  PTDUSRID                 String   @db.Char(15)
+  USER2ENT                 String   @db.Char(15)
+  CREATDDT                 DateTime @db.DateTime
+  MODIFDT                  DateTime @db.DateTime
+  Tax_Date                 DateTime @db.DateTime
+  APLYWITH                 Int      @db.TinyInt
+  WITHHAMT                 Decimal  @db.Decimal(19, 5)
+  SHPPGDOC                 Int      @db.TinyInt
+  CORRCTN                  Int      @db.TinyInt
+  SIMPLIFD                 Int      @db.TinyInt
+  CORRNXST                 Int      @db.TinyInt
+  DOCNCORR                 String   @db.Char(21)
+  SEQNCORR                 Int      @db.SmallInt
+  SALEDATE                 DateTime @db.DateTime
+  SOPHDRE3                 Bytes    @db.Binary(4)
+  EXCEPTIONALDEMAND        Int      @db.TinyInt
+  Flags                    Int      @db.SmallInt
+  BackoutTradeDisc         Decimal  @db.Decimal(19, 5)
+  OrigBackoutTradeDisc     Decimal  @db.Decimal(19, 5)
+  GPSFOINTEGRATIONID       String   @db.Char(31)
+  INTEGRATIONSOURCE        Int      @db.SmallInt
+  INTEGRATIONID            String   @db.Char(31)
+  SOPSTATUS                Int      @db.SmallInt
+  SHIPCOMPLETE             Int      @db.TinyInt
+  DIRECTDEBIT              Int      @db.TinyInt
+  WorkflowApprStatCreditLm Int      @db.SmallInt
+  WorkflowPriorityCreditLm Int      @db.SmallInt
+  WorkflowApprStatusQuote  Int      @db.SmallInt
+  WorkflowPriorityQuote    Int      @db.SmallInt
+  Workflow_Status          Int      @db.SmallInt
+  ContractExchangeRateStat Int      @db.SmallInt
+  Print_Phone_NumberGB     Int      @db.SmallInt
+  DEX_ROW_TS               DateTime @default(dbgenerated("getutcdate()"), map: "DF__SOP10100__DEX_RO__467E410F") @db.DateTime
+  DEX_ROW_ID               Int      @default(autoincrement())
+
+  client                   Client                   @relation(fields: [CUSTNMBR], references: [CUSTNMBR])
+  detail                   ProformaDetail[]
+  work_history             UserDefinedWorkHistory[]
+  sales_taxes_work_history SalesTaxesWorkHistory[]
+  khistory                 KHistory[]
+
+  @@id([SOPNUMBE, SOPTYPE], map: "PKSOP10100", clustered: false)
+  @@map("SOP10100")
+}
+
+model ProformaDetail {
+  SOPTYPE              Int      @db.SmallInt
+  SOPNUMBE             String   @unique @db.Char(21)
+  LNITMSEQ             Int
+  CMPNTSEQ             Int
+  ITEMNMBR             String   @db.Char(31)
+  ITEMDESC             String   @db.Char(101)
+  NONINVEN             Int      @db.SmallInt
+  DROPSHIP             Int      @db.SmallInt
+  UOFM                 String   @db.Char(9)
+  LOCNCODE             String   @db.Char(11)
+  UNITCOST             Decimal  @db.Decimal(19, 5)
+  ORUNTCST             Decimal  @db.Decimal(19, 5)
+  UNITPRCE             Decimal  @db.Decimal(19, 5)
+  ORUNTPRC             Decimal  @db.Decimal(19, 5)
+  XTNDPRCE             Decimal  @db.Decimal(19, 5)
+  OXTNDPRC             Decimal  @db.Decimal(19, 5)
+  REMPRICE             Decimal  @db.Decimal(19, 5)
+  OREPRICE             Decimal  @db.Decimal(19, 5)
+  EXTDCOST             Decimal  @db.Decimal(19, 5)
+  OREXTCST             Decimal  @db.Decimal(19, 5)
+  MRKDNAMT             Decimal  @db.Decimal(19, 5)
+  ORMRKDAM             Decimal  @db.Decimal(19, 5)
+  MRKDNPCT             Int      @db.SmallInt
+  MRKDNTYP             Int      @db.SmallInt
+  INVINDX              Int
+  CSLSINDX             Int
+  SLSINDX              Int
+  MKDNINDX             Int
+  RTNSINDX             Int
+  INUSINDX             Int
+  INSRINDX             Int
+  DMGDINDX             Int
+  ITMTSHID             String   @db.Char(15)
+  IVITMTXB             Int      @db.SmallInt
+  BKTSLSAM             Decimal  @db.Decimal(19, 5)
+  ORBKTSLS             Decimal  @db.Decimal(19, 5)
+  TAXAMNT              Decimal  @db.Decimal(19, 5)
+  ORTAXAMT             Decimal  @db.Decimal(19, 5)
+  TXBTXAMT             Decimal  @db.Decimal(19, 5)
+  OTAXTAMT             Decimal  @db.Decimal(19, 5)
+  BSIVCTTL             Int      @db.TinyInt
+  TRDISAMT             Decimal  @db.Decimal(19, 5)
+  ORTDISAM             Decimal  @db.Decimal(19, 5)
+  DISCSALE             Decimal  @db.Decimal(19, 5)
+  ORDAVSLS             Decimal  @db.Decimal(19, 5)
+  QUANTITY             Decimal  @db.Decimal(19, 5)
+  ATYALLOC             Decimal  @db.Decimal(19, 5)
+  QTYINSVC             Decimal  @db.Decimal(19, 5)
+  QTYINUSE             Decimal  @db.Decimal(19, 5)
+  QTYDMGED             Decimal  @db.Decimal(19, 5)
+  QTYRTRND             Decimal  @db.Decimal(19, 5)
+  QTYONHND             Decimal  @db.Decimal(19, 5)
+  QTYCANCE             Decimal  @db.Decimal(19, 5)
+  QTYCANOT             Decimal  @db.Decimal(19, 5)
+  QTYONPO              Decimal  @db.Decimal(19, 5)
+  QTYORDER             Decimal  @db.Decimal(19, 5)
+  QTYPRBAC             Decimal  @db.Decimal(19, 5)
+  QTYPRBOO             Decimal  @db.Decimal(19, 5)
+  QTYPRINV             Decimal  @db.Decimal(19, 5)
+  QTYPRORD             Decimal  @db.Decimal(19, 5)
+  QTYPRVRECVD          Decimal  @db.Decimal(19, 5)
+  QTYRECVD             Decimal  @db.Decimal(19, 5)
+  QTYREMAI             Decimal  @db.Decimal(19, 5)
+  QTYREMBO             Decimal  @db.Decimal(19, 5)
+  QTYTBAOR             Decimal  @db.Decimal(19, 5)
+  QTYTOINV             Decimal  @db.Decimal(19, 5)
+  QTYTORDR             Decimal  @db.Decimal(19, 5)
+  QTYFULFI             Decimal  @db.Decimal(19, 5)
+  QTYSLCTD             Decimal  @db.Decimal(19, 5)
+  QTYBSUOM             Decimal  @db.Decimal(19, 5)
+  EXTQTYAL             Decimal  @db.Decimal(19, 5)
+  EXTQTYSEL            Decimal  @db.Decimal(19, 5)
+  ReqShipDate          DateTime @db.DateTime
+  FUFILDAT             DateTime @db.DateTime
+  ACTLSHIP             DateTime @db.DateTime
+  SHIPMTHD             String   @db.Char(15)
+  SALSTERR             String   @db.Char(15)
+  SLPRSNID             String   @db.Char(15)
+  PRCLEVEL             String   @db.Char(11)
+  COMMNTID             String   @db.Char(15)
+  BRKFLD1              Int      @db.SmallInt
+  BRKFLD2              Int      @db.SmallInt
+  BRKFLD3              Int      @db.SmallInt
+  CURRNIDX             Int      @db.SmallInt
+  TRXSORCE             String   @db.Char(13)
+  SOPLNERR             Bytes    @db.Binary(4)
+  ORGSEQNM             Int
+  ITEMCODE             String   @db.Char(15)
+  PURCHSTAT            Int      @db.SmallInt
+  DECPLQTY             Int      @db.SmallInt
+  DECPLCUR             Int      @db.SmallInt
+  ODECPLCU             Int      @db.SmallInt
+  QTYTOSHP             Decimal  @db.Decimal(19, 5)
+  XFRSHDOC             Int      @db.TinyInt
+  EXCEPTIONALDEMAND    Int      @db.TinyInt
+  TAXSCHID             String   @db.Char(15)
+  TXSCHSRC             Int      @db.SmallInt
+  PRSTADCD             String   @db.Char(15)
+  ShipToName           String   @db.Char(65)
+  CNTCPRSN             String   @db.Char(61)
+  ADDRESS1             String   @db.Char(61)
+  ADDRESS2             String   @db.Char(61)
+  ADDRESS3             String   @db.Char(61)
+  CITY                 String   @db.Char(35)
+  STATE                String   @db.Char(29)
+  ZIPCODE              String   @db.Char(11)
+  CCode                String   @db.Char(7)
+  COUNTRY              String   @db.Char(61)
+  PHONE1               String   @db.Char(21)
+  PHONE2               String   @db.Char(21)
+  PHONE3               String   @db.Char(21)
+  FAXNUMBR             String   @db.Char(21)
+  Flags                Int      @db.SmallInt
+  BackoutTradeDisc     Decimal  @db.Decimal(19, 5)
+  OrigBackoutTradeDisc Decimal  @db.Decimal(19, 5)
+  GPSFOINTEGRATIONID   String   @db.Char(31)
+  INTEGRATIONSOURCE    Int      @db.SmallInt
+  INTEGRATIONID        String   @db.Char(31)
+  CONTNBR              String   @db.Char(11)
+  CONTLNSEQNBR         Decimal  @db.Decimal(19, 5)
+  CONTSTARTDTE         DateTime @db.DateTime
+  CONTENDDTE           DateTime @db.DateTime
+  CONTITEMNBR          String   @db.Char(31)
+  CONTSERIALNBR        String   @db.Char(21)
+  BULKPICKPRNT         Int      @db.TinyInt
+  INDPICKPRNT          Int      @db.TinyInt
+  ISLINEINTRA          Int      @db.TinyInt
+  SOFULFILLMENTBIN     String   @db.Char(15)
+  MULTIPLEBINS         Int      @db.TinyInt
+  Print_Phone_NumberGB Int      @db.SmallInt
+  DEX_ROW_TS           DateTime @default(dbgenerated("getutcdate()"), map: "DF__SOP10200__DEX_RO__33F57C80") @db.DateTime
+  DEX_ROW_ID           Int      @default(autoincrement())
+
+  proformas Proforma @relation(fields: [SOPNUMBE], references: [SOPNUMBE])
+
+  @@id([SOPNUMBE], map: "PKSOP10200", clustered: false)
+  @@map("SOP10200")
+}
+
+model Invoice {
+  SOPTYPE                  Int      @db.SmallInt
+  SOPNUMBE                 String   @unique @db.Char(21)
+  ORIGTYPE                 Int      @db.SmallInt
+  ORIGNUMB                 String   @db.Char(21)
+  DOCID                    String   @db.Char(15)
+  DOCDATE                  DateTime @db.DateTime
+  GLPOSTDT                 DateTime @db.DateTime
+  QUOTEDAT                 DateTime @db.DateTime
+  QUOEXPDA                 DateTime @db.DateTime
+  ORDRDATE                 DateTime @db.DateTime
+  INVODATE                 DateTime @db.DateTime
+  BACKDATE                 DateTime @db.DateTime
+  RETUDATE                 DateTime @db.DateTime
+  ReqShipDate              DateTime @db.DateTime
+  FUFILDAT                 DateTime @db.DateTime
+  ACTLSHIP                 DateTime @db.DateTime
+  DISCDATE                 DateTime @db.DateTime
+  DUEDATE                  DateTime @db.DateTime
+  REPTING                  Int      @db.TinyInt
+  TRXFREQU                 Int      @db.SmallInt
+  TIMEREPD                 Int      @db.SmallInt
+  TIMETREP                 Int      @db.SmallInt
+  DYSTINCR                 Int      @db.SmallInt
+  DTLSTREP                 DateTime @db.DateTime
+  DSTBTCH1                 String   @db.Char(15)
+  DSTBTCH2                 String   @db.Char(15)
+  USDOCID1                 String   @db.Char(15)
+  USDOCID2                 String   @db.Char(15)
+  DISCFRGT                 Decimal  @db.Decimal(19, 5)
+  ORDAVFRT                 Decimal  @db.Decimal(19, 5)
+  DISCMISC                 Decimal  @db.Decimal(19, 5)
+  ORDAVMSC                 Decimal  @db.Decimal(19, 5)
+  DISAVAMT                 Decimal  @db.Decimal(19, 5)
+  ORDAVAMT                 Decimal  @db.Decimal(19, 5)
+  DISCRTND                 Decimal  @db.Decimal(19, 5)
+  ORDISRTD                 Decimal  @db.Decimal(19, 5)
+  DISTKNAM                 Decimal  @db.Decimal(19, 5)
+  ORDISTKN                 Decimal  @db.Decimal(19, 5)
+  DSCPCTAM                 Int      @db.SmallInt
+  DSCDLRAM                 Decimal  @db.Decimal(19, 5)
+  ORDDLRAT                 Decimal  @db.Decimal(19, 5)
+  DISAVTKN                 Decimal  @db.Decimal(19, 5)
+  ORDATKN                  Decimal  @db.Decimal(19, 5)
+  PYMTRMID                 String   @db.Char(21)
+  PRCLEVEL                 String   @db.Char(11)
+  LOCNCODE                 String   @db.Char(11)
+  BCHSOURC                 String   @db.Char(15)
+  BACHNUMB                 String   @db.Char(15)
+  CUSTNMBR                 String   @db.Char(15)
+  CUSTNAME                 String   @db.Char(65)
+  CSTPONBR                 String   @db.Char(21)
+  PROSPECT                 Int      @db.SmallInt
+  MSTRNUMB                 Int
+  PCKSLPNO                 String   @db.Char(21)
+  PICTICNU                 String   @db.Char(21)
+  MRKDNAMT                 Decimal  @db.Decimal(19, 5)
+  ORMRKDAM                 Decimal  @db.Decimal(19, 5)
+  PRBTADCD                 String   @db.Char(15)
+  PRSTADCD                 String   @db.Char(15)
+  CNTCPRSN                 String   @db.Char(61)
+  ShipToName               String   @db.Char(65)
+  ADDRESS1                 String   @db.Char(61)
+  ADDRESS2                 String   @db.Char(61)
+  ADDRESS3                 String   @db.Char(61)
+  CITY                     String   @db.Char(35)
+  STATE                    String   @db.Char(29)
+  ZIPCODE                  String   @db.Char(11)
+  CCode                    String   @db.Char(7)
+  COUNTRY                  String   @db.Char(61)
+  PHNUMBR1                 String   @db.Char(21)
+  PHNUMBR2                 String   @db.Char(21)
+  PHONE3                   String   @db.Char(21)
+  FAXNUMBR                 String   @db.Char(21)
+  COMAPPTO                 Int      @db.SmallInt
+  COMMAMNT                 Decimal  @db.Decimal(19, 5)
+  OCOMMAMT                 Decimal  @db.Decimal(19, 5)
+  CMMSLAMT                 Decimal  @db.Decimal(19, 5)
+  ORCOSAMT                 Decimal  @db.Decimal(19, 5)
+  NCOMAMNT                 Decimal  @db.Decimal(19, 5)
+  ORNCMAMT                 Decimal  @db.Decimal(19, 5)
+  SHIPMTHD                 String   @db.Char(15)
+  TRDISAMT                 Decimal  @db.Decimal(19, 5)
+  ORTDISAM                 Decimal  @db.Decimal(19, 5)
+  TRDISPCT                 Int      @db.SmallInt
+  SUBTOTAL                 Decimal  @db.Decimal(19, 5)
+  ORSUBTOT                 Decimal  @db.Decimal(19, 5)
+  REMSUBTO                 Decimal  @db.Decimal(19, 5)
+  OREMSUBT                 Decimal  @db.Decimal(19, 5)
+  EXTDCOST                 Decimal  @db.Decimal(19, 5)
+  OREXTCST                 Decimal  @db.Decimal(19, 5)
+  FRTAMNT                  Decimal  @db.Decimal(19, 5)
+  ORFRTAMT                 Decimal  @db.Decimal(19, 5)
+  MISCAMNT                 Decimal  @db.Decimal(19, 5)
+  ORMISCAMT                Decimal  @db.Decimal(19, 5)
+  TXENGCLD                 Int      @db.TinyInt
+  TAXEXMT1                 String   @db.Char(25)
+  TAXEXMT2                 String   @db.Char(25)
+  TXRGNNUM                 String   @db.Char(25)
+  TAXSCHID                 String   @db.Char(15)
+  TXSCHSRC                 Int      @db.SmallInt
+  BSIVCTTL                 Int      @db.TinyInt
+  FRTSCHID                 String   @db.Char(15)
+  FRTTXAMT                 Decimal  @db.Decimal(19, 5)
+  ORFRTTAX                 Decimal  @db.Decimal(19, 5)
+  FRGTTXBL                 Int      @db.SmallInt
+  MSCSCHID                 String   @db.Char(15)
+  MSCTXAMT                 Decimal  @db.Decimal(19, 5)
+  ORMSCTAX                 Decimal  @db.Decimal(19, 5)
+  MISCTXBL                 Int      @db.SmallInt
+  BKTFRTAM                 Decimal  @db.Decimal(19, 5)
+  ORBKTFRT                 Decimal  @db.Decimal(19, 5)
+  BKTMSCAM                 Decimal  @db.Decimal(19, 5)
+  ORBKTMSC                 Decimal  @db.Decimal(19, 5)
+  BCKTXAMT                 Decimal  @db.Decimal(19, 5)
+  OBTAXAMT                 Decimal  @db.Decimal(19, 5)
+  TXBTXAMT                 Decimal  @db.Decimal(19, 5)
+  OTAXTAMT                 Decimal  @db.Decimal(19, 5)
+  TAXAMNT                  Decimal  @db.Decimal(19, 5)
+  ORTAXAMT                 Decimal  @db.Decimal(19, 5)
+  ECTRX                    Int      @db.TinyInt
+  DOCAMNT                  Decimal  @db.Decimal(19, 5)
+  ORDOCAMT                 Decimal  @db.Decimal(19, 5)
+  PYMTRCVD                 Decimal  @db.Decimal(19, 5)
+  ORPMTRVD                 Decimal  @db.Decimal(19, 5)
+  DEPRECVD                 Decimal  @db.Decimal(19, 5)
+  ORDEPRVD                 Decimal  @db.Decimal(19, 5)
+  CODAMNT                  Decimal  @db.Decimal(19, 5)
+  ORCODAMT                 Decimal  @db.Decimal(19, 5)
+  ACCTAMNT                 Decimal  @db.Decimal(19, 5)
+  ORACTAMT                 Decimal  @db.Decimal(19, 5)
+  SALSTERR                 String   @db.Char(15)
+  SLPRSNID                 String   @db.Char(15)
+  UPSZONE                  String   @db.Char(3)
+  TIMESPRT                 Int      @db.SmallInt
+  PSTGSTUS                 Int      @db.SmallInt
+  VOIDSTTS                 Int      @db.SmallInt
+  ALLOCABY                 Int      @db.SmallInt
+  NOTEINDX                 Decimal  @db.Decimal(19, 5)
+  CURNCYID                 String   @db.Char(15)
+  CURRNIDX                 Int      @db.SmallInt
+  RATETPID                 String   @db.Char(15)
+  EXGTBLID                 String   @db.Char(15)
+  XCHGRATE                 Decimal  @db.Decimal(19, 7)
+  DENXRATE                 Decimal  @db.Decimal(19, 7)
+  EXCHDATE                 DateTime @db.DateTime
+  TIME1                    DateTime @db.DateTime
+  RTCLCMTD                 Int      @db.SmallInt
+  MCTRXSTT                 Int      @db.SmallInt
+  TRXSORCE                 String   @db.Char(13)
+  SOPHDRE1                 Bytes    @db.Binary(4)
+  SOPHDRE2                 Bytes    @db.Binary(4)
+  SOPLNERR                 Bytes    @db.Binary(4)
+  SOPHDRFL                 Bytes    @db.Binary(4)
+  COMMNTID                 String   @db.Char(15)
+  REFRENCE                 String   @db.Char(31)
+  POSTEDDT                 DateTime @db.DateTime
+  PTDUSRID                 String   @db.Char(15)
+  USER2ENT                 String   @db.Char(15)
+  CREATDDT                 DateTime @db.DateTime
+  MODIFDT                  DateTime @db.DateTime
+  Tax_Date                 DateTime @db.DateTime
+  APLYWITH                 Int      @db.TinyInt
+  WITHHAMT                 Decimal  @db.Decimal(19, 5)
+  SHPPGDOC                 Int      @db.TinyInt
+  CORRCTN                  Int      @db.TinyInt
+  SIMPLIFD                 Int      @db.TinyInt
+  DOCNCORR                 String   @db.Char(21)
+  SEQNCORR                 Int      @db.SmallInt
+  SALEDATE                 DateTime @db.DateTime
+  EXCEPTIONALDEMAND        Int      @db.TinyInt
+  Flags                    Int      @db.SmallInt
+  SOPSTATUS                Int      @db.SmallInt
+  SHIPCOMPLETE             Int      @db.TinyInt
+  DIRECTDEBIT              Int      @db.TinyInt
+  WorkflowApprStatCreditLm Int      @db.SmallInt
+  WorkflowPriorityCreditLm Int      @db.SmallInt
+  WorkflowApprStatusQuote  Int      @db.SmallInt
+  WorkflowPriorityQuote    Int      @db.SmallInt
+  Workflow_Status          Int      @db.SmallInt
+  ContractExchangeRateStat Int      @db.SmallInt
+  Print_Phone_NumberGB     Int      @db.SmallInt
+  DEX_ROW_TS               DateTime @default(dbgenerated("getutcdate()"), map: "DF__SOP30200__DEX_RO__0EF901FB") @db.DateTime
+  DEX_ROW_ID               Int      @default(autoincrement())
+
+  invoice_detail        InvoiceDetail[]
+  Client                Client?                  @relation(fields: [CUSTNMBR], references: [CUSTNMBR])
+  work_history          UserDefinedWorkHistory[]
+  sale_tax_work_history SalesTaxesWorkHistory[]
+  rm_open_transanctions RMOpenTransactions[]
+
+  @@id([SOPNUMBE], map: "PKSOP30200", clustered: false)
+  @@map("SOP30200")
+}
+
+model InvoiceDetail {
+  SOPTYPE              Int      @db.SmallInt
+  SOPNUMBE             String   @db.Char(21)
+  LNITMSEQ             Int
+  CMPNTSEQ             Int
+  ITEMNMBR             String   @db.Char(31)
+  ITEMDESC             String   @db.Char(101)
+  NONINVEN             Int      @db.SmallInt
+  DROPSHIP             Int      @db.SmallInt
+  UOFM                 String   @db.Char(9)
+  LOCNCODE             String   @db.Char(11)
+  UNITCOST             Decimal  @db.Decimal(19, 5)
+  ORUNTCST             Decimal  @db.Decimal(19, 5)
+  UNITPRCE             Decimal  @db.Decimal(19, 5)
+  ORUNTPRC             Decimal  @db.Decimal(19, 5)
+  XTNDPRCE             Decimal  @db.Decimal(19, 5)
+  OXTNDPRC             Decimal  @db.Decimal(19, 5)
+  REMPRICE             Decimal  @db.Decimal(19, 5)
+  OREPRICE             Decimal  @db.Decimal(19, 5)
+  EXTDCOST             Decimal  @db.Decimal(19, 5)
+  OREXTCST             Decimal  @db.Decimal(19, 5)
+  MRKDNAMT             Decimal  @db.Decimal(19, 5)
+  ORMRKDAM             Decimal  @db.Decimal(19, 5)
+  MRKDNPCT             Int      @db.SmallInt
+  MRKDNTYP             Int      @db.SmallInt
+  INVINDX              Int
+  CSLSINDX             Int
+  SLSINDX              Int
+  MKDNINDX             Int
+  RTNSINDX             Int
+  INUSINDX             Int
+  INSRINDX             Int
+  DMGDINDX             Int
+  ITMTSHID             String   @db.Char(15)
+  IVITMTXB             Int      @db.SmallInt
+  BKTSLSAM             Decimal  @db.Decimal(19, 5)
+  ORBKTSLS             Decimal  @db.Decimal(19, 5)
+  TAXAMNT              Decimal  @db.Decimal(19, 5)
+  ORTAXAMT             Decimal  @db.Decimal(19, 5)
+  TXBTXAMT             Decimal  @db.Decimal(19, 5)
+  OTAXTAMT             Decimal  @db.Decimal(19, 5)
+  BSIVCTTL             Int      @db.TinyInt
+  TRDISAMT             Decimal  @db.Decimal(19, 5)
+  ORTDISAM             Decimal  @db.Decimal(19, 5)
+  DISCSALE             Decimal  @db.Decimal(19, 5)
+  ORDAVSLS             Decimal  @db.Decimal(19, 5)
+  QUANTITY             Decimal  @db.Decimal(19, 5)
+  ATYALLOC             Decimal  @db.Decimal(19, 5)
+  QTYINSVC             Decimal  @db.Decimal(19, 5)
+  QTYINUSE             Decimal  @db.Decimal(19, 5)
+  QTYDMGED             Decimal  @db.Decimal(19, 5)
+  QTYRTRND             Decimal  @db.Decimal(19, 5)
+  QTYONHND             Decimal  @db.Decimal(19, 5)
+  QTYCANCE             Decimal  @db.Decimal(19, 5)
+  QTYCANOT             Decimal  @db.Decimal(19, 5)
+  QTYORDER             Decimal  @db.Decimal(19, 5)
+  QTYPRBAC             Decimal  @db.Decimal(19, 5)
+  QTYPRBOO             Decimal  @db.Decimal(19, 5)
+  QTYPRINV             Decimal  @db.Decimal(19, 5)
+  QTYPRORD             Decimal  @db.Decimal(19, 5)
+  QTYPRVRECVD          Decimal  @db.Decimal(19, 5)
+  QTYRECVD             Decimal  @db.Decimal(19, 5)
+  QTYREMAI             Decimal  @db.Decimal(19, 5)
+  QTYREMBO             Decimal  @db.Decimal(19, 5)
+  QTYTBAOR             Decimal  @db.Decimal(19, 5)
+  QTYTOINV             Decimal  @db.Decimal(19, 5)
+  QTYTORDR             Decimal  @db.Decimal(19, 5)
+  QTYFULFI             Decimal  @db.Decimal(19, 5)
+  QTYSLCTD             Decimal  @db.Decimal(19, 5)
+  QTYBSUOM             Decimal  @db.Decimal(19, 5)
+  EXTQTYAL             Decimal  @db.Decimal(19, 5)
+  EXTQTYSEL            Decimal  @db.Decimal(19, 5)
+  ReqShipDate          DateTime @db.DateTime
+  FUFILDAT             DateTime @db.DateTime
+  ACTLSHIP             DateTime @db.DateTime
+  SHIPMTHD             String   @db.Char(15)
+  SALSTERR             String   @db.Char(15)
+  SLPRSNID             String   @db.Char(15)
+  PRCLEVEL             String   @db.Char(11)
+  COMMNTID             String   @db.Char(15)
+  BRKFLD1              Int      @db.SmallInt
+  BRKFLD2              Int      @db.SmallInt
+  BRKFLD3              Int      @db.SmallInt
+  CURRNIDX             Int      @db.SmallInt
+  TRXSORCE             String   @db.Char(13)
+  SOPLNERR             Bytes    @db.Binary(4)
+  DOCNCORR             String   @db.Char(21)
+  ORGSEQNM             Int
+  ITEMCODE             String   @db.Char(15)
+  PURCHSTAT            Int      @db.SmallInt
+  DECPLQTY             Int      @db.SmallInt
+  DECPLCUR             Int      @db.SmallInt
+  ODECPLCU             Int      @db.SmallInt
+  EXCEPTIONALDEMAND    Int      @db.TinyInt
+  TAXSCHID             String   @db.Char(15)
+  TXSCHSRC             Int      @db.SmallInt
+  PRSTADCD             String   @db.Char(15)
+  ShipToName           String   @db.Char(65)
+  CNTCPRSN             String   @db.Char(61)
+  ADDRESS1             String   @db.Char(61)
+  ADDRESS2             String   @db.Char(61)
+  ADDRESS3             String   @db.Char(61)
+  CITY                 String   @db.Char(35)
+  STATE                String   @db.Char(29)
+  ZIPCODE              String   @db.Char(11)
+  CCode                String   @db.Char(7)
+  COUNTRY              String   @db.Char(61)
+  PHONE1               String   @db.Char(21)
+  PHONE2               String   @db.Char(21)
+  PHONE3               String   @db.Char(21)
+  FAXNUMBR             String   @db.Char(21)
+  Flags                Int      @db.SmallInt
+  CONTNBR              String   @db.Char(11)
+  CONTLNSEQNBR         Decimal  @db.Decimal(19, 5)
+  CONTSTARTDTE         DateTime @db.DateTime
+  CONTENDDTE           DateTime @db.DateTime
+  CONTITEMNBR          String   @db.Char(31)
+  CONTSERIALNBR        String   @db.Char(21)
+  ISLINEINTRA          Int      @db.TinyInt
+  Print_Phone_NumberGB Int      @db.SmallInt
+  DEX_ROW_TS           DateTime @default(dbgenerated("getutcdate()"), map: "DF__SOP30300__DEX_RO__6A86975B") @db.DateTime
+  DEX_ROW_ID           Int      @default(autoincrement())
+
+  invoice Invoice @relation(fields: [SOPNUMBE], references: [SOPNUMBE])
+
+  @@id([SOPNUMBE, SOPTYPE, CMPNTSEQ, LNITMSEQ], map: "PKSOP30300", clustered: false)
+  @@map("SOP30300")
+}
+
+model RMOpenTransactions {
+  CUSTNMBR         String   @db.Char(15)
+  CPRCSTNM         String   @db.Char(15)
+  DOCNUMBR         String   @db.Char(21)
+  CHEKNMBR         String   @db.Char(21)
+  BACHNUMB         String   @db.Char(15)
+  BCHSOURC         String   @db.Char(15)
+  TRXSORCE         String   @db.Char(13)
+  RMDTYPAL         Int      @db.SmallInt
+  CSHRCTYP         Int      @db.SmallInt
+  CBKIDCRD         String   @db.Char(15)
+  CBKIDCSH         String   @db.Char(15)
+  CBKIDCHK         String   @db.Char(15)
+  DUEDATE          DateTime @db.DateTime
+  DOCDATE          DateTime @db.DateTime
+  POSTDATE         DateTime @db.DateTime
+  PSTUSRID         String   @db.Char(15)
+  GLPOSTDT         DateTime @db.DateTime
+  LSTEDTDT         DateTime @db.DateTime
+  LSTUSRED         String   @db.Char(15)
+  ORTRXAMT         Decimal  @db.Decimal(19, 5)
+  CURTRXAM         Decimal  @db.Decimal(19, 5)
+  SLSAMNT          Decimal  @db.Decimal(19, 5)
+  COSTAMNT         Decimal  @db.Decimal(19, 5)
+  FRTAMNT          Decimal  @db.Decimal(19, 5)
+  MISCAMNT         Decimal  @db.Decimal(19, 5)
+  TAXAMNT          Decimal  @db.Decimal(19, 5)
+  COMDLRAM         Decimal  @db.Decimal(19, 5)
+  CASHAMNT         Decimal  @db.Decimal(19, 5)
+  DISTKNAM         Decimal  @db.Decimal(19, 5)
+  DISAVAMT         Decimal  @db.Decimal(19, 5)
+  DISAVTKN         Decimal  @db.Decimal(19, 5)
+  DISCRTND         Decimal  @db.Decimal(19, 5)
+  DISCDATE         DateTime @db.DateTime
+  DSCDLRAM         Decimal  @db.Decimal(19, 5)
+  DSCPCTAM         Int      @db.SmallInt
+  WROFAMNT         Decimal  @db.Decimal(19, 5)
+  TRXDSCRN         String   @db.Char(31)
+  CSPORNBR         String   @db.Char(21)
+  SLPRSNID         String   @db.Char(15)
+  SLSTERCD         String   @db.Char(15)
+  DINVPDOF         DateTime @db.DateTime
+  PPSAMDED         Decimal  @db.Decimal(19, 5)
+  GSTDSAMT         Decimal  @db.Decimal(19, 5)
+  DELETE1          Int      @db.TinyInt
+  AGNGBUKT         Int      @db.SmallInt
+  VOIDSTTS         Int      @db.SmallInt
+  VOIDDATE         DateTime @db.DateTime
+  TAXSCHID         String   @db.Char(15)
+  CURNCYID         String   @db.Char(15)
+  PYMTRMID         String   @db.Char(21)
+  SHIPMTHD         String   @db.Char(15)
+  TRDISAMT         Decimal  @db.Decimal(19, 5)
+  SLSCHDID         String   @db.Char(15)
+  FRTSCHID         String   @db.Char(15)
+  MSCSCHID         String   @db.Char(15)
+  NOTEINDX         Decimal  @db.Decimal(19, 5)
+  Tax_Date         DateTime @db.DateTime
+  APLYWITH         Int      @db.TinyInt
+  SALEDATE         DateTime @db.DateTime
+  CORRCTN          Int      @db.TinyInt
+  SIMPLIFD         Int      @db.TinyInt
+  Electronic       Int      @db.TinyInt
+  ECTRX            Int      @db.TinyInt
+  BKTSLSAM         Decimal  @db.Decimal(19, 5)
+  BKTFRTAM         Decimal  @db.Decimal(19, 5)
+  BKTMSCAM         Decimal  @db.Decimal(19, 5)
+  BackoutTradeDisc Decimal  @db.Decimal(19, 5)
+  Factoring        Int      @db.TinyInt
+  DIRECTDEBIT      Int      @db.TinyInt
+  ADRSCODE         String   @db.Char(15)
+  EFTFLAG          Int      @db.TinyInt
+  DEX_ROW_TS       DateTime @default(dbgenerated("getutcdate()"), map: "DF__RM20101__DEX_ROW__121F8769") @db.DateTime
+  DEX_ROW_ID       Int      @default(autoincrement())
+
+  client Client  @relation(fields: [CUSTNMBR], references: [CUSTNMBR], onDelete: NoAction, onUpdate: NoAction)
+  invoce Invoice @relation(fields: [DOCNUMBR], references: [SOPNUMBE], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([CUSTNMBR, RMDTYPAL, DOCNUMBR], map: "PKRM20101", clustered: false)
+  @@map("RM20101")
+}
+
+model SalesTaxesWorkHistory {
+  SOPTYPE     Int     @db.SmallInt
+  SOPNUMBE    String  @db.Char(21)
+  LNITMSEQ    Int
+  TAXDTLID    String  @db.Char(15)
+  ACTINDX     Int
+  BKOUTTAX    Int     @db.TinyInt
+  TXABLETX    Int     @db.TinyInt
+  STAXAMNT    Decimal @db.Decimal(19, 5)
+  ORSLSTAX    Decimal @db.Decimal(19, 5)
+  FRTTXAMT    Decimal @db.Decimal(19, 5)
+  ORFRTTAX    Decimal @db.Decimal(19, 5)
+  MSCTXAMT    Decimal @db.Decimal(19, 5)
+  ORMSCTAX    Decimal @db.Decimal(19, 5)
+  TAXDTSLS    Decimal @db.Decimal(19, 5)
+  ORTOTSLS    Decimal @db.Decimal(19, 5)
+  TDTTXSLS    Decimal @db.Decimal(19, 5)
+  ORTXSLS     Decimal @db.Decimal(19, 5)
+  TXDTOTTX    Decimal @db.Decimal(19, 5)
+  OTTAXPON    Decimal @db.Decimal(19, 5)
+  DELETE1     Int     @db.TinyInt
+  CURRNIDX    Int     @db.SmallInt
+  TRXSORCE    String  @db.Char(13)
+  TXDTLPCTAMT Decimal @db.Decimal(19, 5)
+  DEX_ROW_ID  Int     @default(autoincrement())
+
+  proforma Proforma @relation(fields: [SOPNUMBE, SOPTYPE], references: [SOPNUMBE, SOPTYPE], onDelete: NoAction, onUpdate: NoAction)
+  invoice  Invoice  @relation(fields: [SOPNUMBE], references: [SOPNUMBE], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([SOPNUMBE], map: "PKSOP10105", clustered: false)
+  @@map("SOP10105")
+}
+
+model KHistory {
+  SOPTYPE     Int     @db.SmallInt
+  SOPNUMBE    String  @db.Char(21)
+  PRCHLDID    String  @db.Char(15)
+  DELETE1     Int     @db.TinyInt
+  USERID      String  @db.Char(15)
+  HOLDDATE    DateTime @db.DateTime
+  TIME1       DateTime @db.DateTime
+  TRXSORCE    String  @db.Char(13)
+  DEX_ROW_ID  Int     @default(autoincrement())
+
+  proforma Proforma @relation(fields: [SOPNUMBE, SOPTYPE], references: [SOPNUMBE, SOPTYPE], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([SOPNUMBE], map: "PKSOP10104", clustered: false)
+  @@map("SOP10104")
+}
+
+model UserDefinedWorkHistory {
+  SOPTYPE    Int      @db.SmallInt
+  SOPNUMBE   String   @unique @db.Char(21)
+  USRDAT01   DateTime @db.DateTime
+  USRDAT02   DateTime @db.DateTime
+  USRTAB01   String   @db.Char(21)
+  USRTAB09   String   @db.Char(21)
+  USRTAB03   String   @db.Char(21)
+  USERDEF1   String   @db.Char(21)
+  USERDEF2   String   @db.Char(21)
+  USRDEF03   String   @db.Char(21)
+  USRDEF04   String   @db.Char(21)
+  USRDEF05   String   @db.Char(21)
+  COMMENT_1  String   @db.Char(51)
+  COMMENT_2  String   @db.Char(51)
+  COMMENT_3  String   @db.Char(51)
+  COMMENT_4  String   @db.Char(51)
+  DEX_ROW_ID Int      @default(autoincrement())
+  CMMTTEXT   String   @db.Text
+
+  proforma Proforma @relation(fields: [SOPNUMBE, SOPTYPE], references: [SOPNUMBE, SOPTYPE], onDelete: NoAction, onUpdate: NoAction)
+  invoice  Invoice  @relation(fields: [SOPNUMBE], references: [SOPNUMBE])
+
+  @@id([SOPNUMBE], map: "PKSOP10106", clustered: false)
+  @@map("SOP10106")
+}
+
+model ExtendedPricingPriceBookWork {
+  PRCBKID    String @db.Char(15)
+  PRODTCOD   String @db.Char(1)
+  LINKCODE   String @db.Char(15)
+  SEQNUMBR   Int
+  DEX_ROW_ID Int    @default(autoincrement())
+
+  @@id([PRCBKID, PRODTCOD, LINKCODE], map: "PKSOP10205", clustered: false)
+  @@map("SOP10205")
+}
+
+model sysdiagrams {
+  name         String @db.NVarChar(128)
+  principal_id Int
+  diagram_id   Int    @id(map: "PK__sysdiagr__C2B05B6109BDD576") @default(autoincrement())
+  version      Int?
+  definition   Bytes?
+
+  @@unique([principal_id, name], map: "UK_principal_name")
+}
+
+model Rates {
+  EXGTBLID   String
+  CURNCYID   String
+  EXCHDATE   DateTime
+  TIME1      DateTime
+  XCHGRATE   Float
+  EXPNDATE   DateTime
+  DEX_ROW_ID Int      
+
+  @@map("MC00100")
+  @@id([EXGTBLID, EXCHDATE, TIME1], map: "PKMC00100", clustered: false)
+}
